@@ -111,9 +111,7 @@ class DMRParser:
             If None, the data file path is taken from the DMR++ file.
         """
         self.root = root
-        self.data_filepath = (
-            data_filepath if data_filepath is not None else self.root.attrib["name"]
-        )
+        self.data_filepath = self.root.attrib["{" + self._NS["dmrpp"] + "}" + "href"]   
 
     def parse_dataset(self, group=None, indexes: Mapping[str, Index] = {}) -> Dataset:
         """
